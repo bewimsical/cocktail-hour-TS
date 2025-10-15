@@ -60,7 +60,7 @@ function getDrink(): void {
       const drinks = data.drinks;
       if (!drinks || !Array.isArray(drinks)) {
         const noDrink = document.createElement('h2');
-        const drinkMessages = ["Go home, you're drunk!", "Shaker's Empty"];
+        const drinkMessages = ["Go home, you're drunk!", "Shaker's Empty", "404: Cocktail not found", "Nothing shaken or stirred.", "No matches — must be a mocktail!"];
         noDrink.classList.add('no-drink');
         noDrink.innerText = drinkMessages[Math.floor(Math.random() * drinkMessages.length)]!;
         resultsContainer.append(noDrink);
