@@ -9,8 +9,9 @@ const searchOptions = document.querySelectorAll('.search-by');
 
 button.addEventListener('click', getDrink);
 
-input.addEventListener('keypress', (e: KeyboardEvent) => {
+input.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key === 'Enter') {
+    e.preventDefault();
     getDrink();
   }
 });
@@ -57,7 +58,7 @@ function getDrink(): void {
       resultsContainer.style.display = 'flex';
 
       const drinks = data.drinks;
-      if (!drinks) {
+      if (!drinks || !Array.isArray(drinks)) {
         const noDrink = document.createElement('h2');
         const drinkMessages = ["Go home, you're drunk!", "Shaker's Empty"];
         noDrink.classList.add('no-drink');

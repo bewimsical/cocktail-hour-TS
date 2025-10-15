@@ -5,8 +5,9 @@ const input = document.querySelector('input');
 const recipeLink = document.querySelector('.recipe-link');
 const searchOptions = document.querySelectorAll('.search-by');
 button.addEventListener('click', getDrink);
-input.addEventListener('keypress', (e) => {
+input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        e.preventDefault();
         getDrink();
     }
 });
@@ -43,7 +44,7 @@ function getDrink() {
         carouselContainer.style.display = 'none';
         resultsContainer.style.display = 'flex';
         const drinks = data.drinks;
-        if (!drinks) {
+        if (!drinks || !Array.isArray(drinks)) {
             const noDrink = document.createElement('h2');
             const drinkMessages = ["Go home, you're drunk!", "Shaker's Empty"];
             noDrink.classList.add('no-drink');
